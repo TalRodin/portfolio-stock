@@ -7,19 +7,36 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import Symbol from './Symbol'
 import styled from 'styled-components';
+const Title=styled.div`
+@import url('https://fonts.googleapis.com/css?family=Lato');
+text-transform: uppercase;
 
+font-family: 'Lato', sans-serif;
+display:center;
+text-align: center;
+padding-bottom: 10%;
+color: #61677C;
+`
 const WrapperOne=styled.div`
   float:left;
-  width:40%;
-                    height:auto;
-                    position: relative;
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-top:50px;
-                    margin-bottom:50px;
-                    border-radius:1rem;
+  width: 40%;
+  height: 500px;
+//   display:inline-block
+border-radius: 4px;
+//   border: 1px solid red;
+//   margin: 10px;
+margin-right: 2%;
+ // width:40%;
+                    // height:auto;
+                    // position: relative;
+                
+                    // margin-top:50px;
+                    // margin-bottom:50px;
+                    // border-radius:1rem;
   background-color: #f7f7f7;
-  padding-bottom: 40%;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow:
 -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
 -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
@@ -31,17 +48,20 @@ const WrapperOne=styled.div`
 50px 50px 85px rgba(0, 0, 0, 0.07);
 `
 const WrapperTwo=styled.div`
-float:right;
-  width:40%;
-                    height:auto;
-                    position: absolute;
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-top:50px;
-                    margin-bottom:50px;
-                    border-radius:1rem;
+float:left;
+width: 40%;
+height: 500px;
+margin-left: 8%;
+border-radius: 4px;
+//   width:40%;
+                    // height:auto;
+                    // position: absolute;
+                 
+                    // margin-top:50px;
+                    // margin-bottom:50px;
+                    // border-radius:1rem;
   background-color: #f7f7f7;
-  padding-bottom: 40%;
+ padding: 30px;
   box-shadow:
 -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
 -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
@@ -52,8 +72,23 @@ float:right;
 15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
 50px 50px 85px rgba(0, 0, 0, 0.07);
 `
+const Wrap=styled.div`
+
+    width: 90%;
+    // border: 1px solid red;
+    margin:auto;
+    // height: 900px;
+    top:20%;
+    left:5%;
+    
+    position:absolute;
 
 
+`
+const InlineBlock=styled.div`
+display:inline-block;
+
+`
 
 
 const API_KEY='FBEEVNPWBGZJJW72'
@@ -105,8 +140,10 @@ class Transactions extends React.Component{
        
 
         return(
-            <div>
-            <WrapperOne>
+            <Wrap>
+            < WrapperOne>
+            <Title>Stock Information</Title>
+            <InlineBlock>
             <Form getPrice={this.getPrice}/>
             <Prices 
             symbol={this.state.symbol}
@@ -114,13 +151,14 @@ class Transactions extends React.Component{
             volume={this.state.volume}
             error={this.state.error}
             />
+            </InlineBlock>
             <AddSymbol  />
             </WrapperOne>
-            <WrapperTwo>
-                
+            < WrapperTwo>
+                <Title>Transactions</Title>
                 {content}
-            </WrapperTwo>
-            </div>
+            </ WrapperTwo>
+           </Wrap>
         )
     }
 }

@@ -11,10 +11,11 @@ const LogoWrapper = styled.div`
     letter-spacing: -0.2px;
     display: absolute;
     float:left;
-    font-weight: 600;
+   
     font-family: 'Lato', sans-serif;
     border-bottom:2px solid transparent;
     color: #61677C;
+    font-weight: 600;
     text-shadow: 1px 1px 1px #FFF;
 `
 
