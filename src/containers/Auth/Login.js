@@ -10,23 +10,19 @@ import styled from 'styled-components';
 
 
 
-export const FormWrapper = styled.div`
-  width: 100%;
-  max-width: 60rem;
-  margin: 0 auto;
-  border-radius: 0.7rem;
-  padding: 3rem 3rem;
-  display: flex;
-  position: absolute;
-                        //   top: 100%;
-                        //   left: 50%;
-  margin-left: 50%;
-  transform: translate(-50%, 50%);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #f7f7f7;;
-  box-shadow:
+const FormWrapper = styled.div`
+float:center;
+width: 100%;
+max-width: 80rem;
+margin: 0 auto;
+border-radius: 0.7rem;
+padding: 4rem 3rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #f7f7f7;;
+box-shadow:
 -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
 -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
 -15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
@@ -37,12 +33,12 @@ export const FormWrapper = styled.div`
 50px 50px 85px rgba(0, 0, 0, 0.07);
 `;
 
-export const StyledForm = styled(Form)`
-  display: flex;
-  position: relative;
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
+const StyledForm = styled(Form)`
+display: flex;
+position: relative;
+align-items: center;
+width: 100%;
+flex-direction: column;
 `;
 
 

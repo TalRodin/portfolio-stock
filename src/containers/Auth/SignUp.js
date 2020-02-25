@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import * as actions from '../../store/actions'
 import Message from '../../components/UI/Message'
 import styled from 'styled-components';
-export const FormWrapper = styled.div`
+const FormWrapper = styled.div`
   width: 100%;
   max-width: 60rem;
   margin: 0 auto;
@@ -29,7 +29,7 @@ export const FormWrapper = styled.div`
 50px 50px 85px rgba(0, 0, 0, 0.07);
 `;
 
-export const StyledForm = styled(Form)`
+const StyledForm = styled(Form)`
   display: flex;
   position: relative;
   align-items: center;

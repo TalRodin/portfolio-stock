@@ -4,9 +4,7 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 const Back = styled.div`
-background-color:#f7f7f7;
-height:700px;
-width:100%;
+background-size: 100px 100px;
 `
 
 
