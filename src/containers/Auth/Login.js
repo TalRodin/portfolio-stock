@@ -21,7 +21,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #f7f7f7;;
+background-color: #f7f7f7;
 box-shadow:
 -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
 -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
