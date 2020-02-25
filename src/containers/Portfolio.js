@@ -95,20 +95,17 @@ class Portfolio extends React.Component{
             
         }
         let total=5000
-        console.log('-----',content)
     return (
         <Wrap>
-         <WrapperTwo>
-             <Title>
-             {`Portfolio total amount ${total}`}
-             </Title>
-         
-             {content}
-          </WrapperTwo>
-          </Wrap>
-          )
+            <WrapperTwo>
+                <Title>
+                    {`Cash account balance: $${total} USD`}
+                </Title>
+                {content}
+            </WrapperTwo>
+        </Wrap>
+        )
     }
-    
 }
 const mapStateToProps=({firebase, firestore})=>({
     userId: firebase.auth.uid,
@@ -116,9 +113,7 @@ const mapStateToProps=({firebase, firestore})=>({
     requesting:  firestore.status.requesting,
     requested: firestore.status.requested
 })
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = {}
 export default compose(
     connect(mapStateToProps,mapDispatchToProps),
     firestoreConnect(props=>[`todos/${props.userId}`]),

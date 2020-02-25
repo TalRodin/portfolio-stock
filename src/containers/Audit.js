@@ -46,7 +46,7 @@ class Symbol extends React.Component{
         return(
         < TextWrap>
            
-            {this.props.symbol.symbol} · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}</SumWrap>
+            {this.props.symbol.symbol} · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}USD</SumWrap>
 
         </ TextWrap>
         )
