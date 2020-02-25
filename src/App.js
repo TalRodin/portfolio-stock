@@ -8,9 +8,34 @@ import SignUp from './containers/Auth/SignUp'
 import {connect} from 'react-redux'
 import Logout from './containers/Auth/Logout'
 import VerifyEmail from './containers/Auth/VerifyEmail'
-
-// import { auth } from 'firebase'
-
+import styled from 'styled-components'
+const BackgroundOne = styled.div`
+position: fixed;
+width: 650px;
+height: 500px;
+top: 40%;
+right:-10px;
+border:solid thin #f49e9f;
+border-radius: 30% 70% 70% 30% / 30% 69% 31% 70% ;
+`
+const BackgroundTwo = styled.div`
+position: fixed;
+width: 400px;
+height: 300px;
+top: 55%;
+left:40px;
+border:solid thin #f49e9f;
+border-radius: 60% 35% 60% 38% / 33% 23% 77% 67% ;
+`
+const BackgroundThree = styled.div`
+position: fixed;
+width: 300px;
+height: 500px;
+top: 0%;
+left:20%;
+border:solid thin #f49e9f;
+border-radius: 60% 35% 60% 38% / 33% 23% 77% 67% ;
+`
 const App = ({loggedIn,emailVerified}) => {
     let routes;
     if (loggedIn && !emailVerified){
@@ -43,7 +68,9 @@ const App = ({loggedIn,emailVerified}) => {
     }
     return (
     <Layout>
-        
+        <BackgroundOne></BackgroundOne>
+        <BackgroundTwo></BackgroundTwo>
+        <BackgroundThree></BackgroundThree>
             {routes}
         
     </Layout>)

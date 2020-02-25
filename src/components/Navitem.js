@@ -24,21 +24,27 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const Buttonwrap =styled.div`
-  width: 100px;
-  height: 45px;
-  background: #F2F2F2;
-  border-radius: 11px;
-  text-decoration:none;
-  color:#0B0B0B;
-  justify-content: center;
-  margin: 0 1rem;
-  box-shadow: inset 0 0 15px rgba(66, 66, 66, 0), inset 0 0 20px rgba(255, 255, 255, 0), 7px 7px 15px rgba(58, 58, 58, 0.15), -7px -7px 20px white, inset 0px 0px 4px rgba(255, 255, 255, 0.2);
-  transition: box-shadow 399ms ease-in-out;
+@import url('https://fonts.googleapis.com/css?family=Lato');
+color:#61677C;
+text-transform: uppercase;
+font-family: 'Lato', sans-serif;
+font-weight: bold;
+box-shadow: -5px -5px 20px #FFF,  5px 5px 20px #BABECC;
+transition: all 0.2s ease-in-out;
+cursor: pointer;
+border: 0;
+outline: 0;
+border-radius: 50px;
+padding:16px;
+background-color:#f7f7f7;
+text-shadow: 1px 1px 0 #FFF;
+&:hover {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
 
-  &:hover {
-    box-shadow: inset 7px 7px 15px rgba(66, 66, 66, 0.15), inset -7px -7px 20px white, 0px 0px 4px rgba(255, 255, 255, 0.2);
-    color:#676767;
-  }
+&:active {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
 `
 
 

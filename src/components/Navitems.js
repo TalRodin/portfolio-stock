@@ -10,7 +10,9 @@ const Ul = styled.ul`
   
 `;
 const Nav = styled.nav`
-  display: flex;
+  margin:0;
+  float: right;
+  
   
 `;
 const NavItems = ({clicked, loggedIn}) =>{
