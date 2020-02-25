@@ -8,6 +8,7 @@ import Message from '../components/UI/Message'
 import * as Yup from 'yup'
 import * as actions from '../store/actions'
 import styled from 'styled-components';
+
 const ButtonWrap=styled.div`
 float:right;
 display:fixed
@@ -38,7 +39,35 @@ text-shadow: 1px 1px 0 #FFF;
 }
 
 `
+const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  border-radius: 0.7rem;
+  padding: 8rem 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+//   background-color: #f7f7f7;;
+//   box-shadow:
+// -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
+// -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
+// -15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
+// -50px -50px 85px rgba(255,255,255, 0.07),
+// 2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
+// 6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
+// 15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
+// 50px 50px 85px rgba(0, 0, 0, 0.07);
+`;
 
+const StyledForm = styled(Form)`
+display: flex;
+position: relative;
+align-items: center;
+width: 100%;
+flex-direction: column;
+`;
 const StockSchema=Yup.object().shape({
     // todo: Yup.string().required('The symbol is required'),
     symbol:Yup.string().required('The symbol is required'),
@@ -75,7 +104,8 @@ const AddSymbol = ({addSymbol, loading, error}) =>{
         }}
         >
             {({isSubmitting, isValid})=>(
-                <Form>
+                <FormWrapper>
+                    <StyledForm>
                     <Field
                         type='text'
                         name='symbol'
@@ -95,20 +125,20 @@ const AddSymbol = ({addSymbol, loading, error}) =>{
                         component={Input}
                     />
                     <div>
-                    <Button
+                    <ButtonWrap
                     
                     type='submit'
                     disabled={!isValid || isSubmitting}
                     loading={loading ? 'Adding...': null}
                     >
                         Submit order
-                    </Button>
-                    <Button
+                    </ButtonWrap>
+                    <ButtonWrap
                
                     onClick={()=>setisOpened(false)}
                     >
                         Cancel
-                    </Button>
+                    </ButtonWrap>
                     </div>
 
         <div>
@@ -116,7 +146,8 @@ const AddSymbol = ({addSymbol, loading, error}) =>{
             {error}
           </Message>
         </div>
-                </Form>
+        </StyledForm>
+                </FormWrapper>
             )}
         </Formik>
       </Modal>

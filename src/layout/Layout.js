@@ -3,20 +3,23 @@ import Navbar from '../components/Navbar'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 
-const Back = styled.div`
-background-size: 100px 100px;
-`
+// const Back = styled.div`
+// // background-size: 100px 100px;
+// background-color:red;
+// background:cover;
+// `
+
 
 
 const Layout = ({children, loggedIn}) =>(
-  <Back >
+  <div>
      
       <Navbar loggedIn={loggedIn}/> 
       <div>
           {children}
       </div>
-
-  </Back>
+      
+  </div>
 )
 
 const mapStateToProps = ({firebase}) =>({

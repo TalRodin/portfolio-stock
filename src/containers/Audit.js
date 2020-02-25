@@ -1,6 +1,17 @@
 import React from 'react'
 import Prices from '../components/getStock/Prices'
 import Form from '../components/getStock/Form'
+import styled from 'styled-components';
+const TextWrap = styled.div`
+@import url('https://fonts.googleapis.com/css?family=Lato');
+color: #61677C;
+font-size: 16px;
+font-family: 'Lato', sans-serif;
+`
+const SumWrap = styled.div`
+float:right;
+`
+
 const API_KEY='FBEEVNPWBGZJJW72'
 
 class Symbol extends React.Component{
@@ -33,11 +44,11 @@ class Symbol extends React.Component{
         console.log('+++++',this)
        
         return(
-        <div>
+        < TextWrap>
            
-            {this.props.symbol.symbol} -- {this.props.symbol.quantity}@{this.state.price*this.props.symbol.quantity}
+            {this.props.symbol.symbol} · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}</SumWrap>
 
-        </div>
+        </ TextWrap>
         )
     }
 }
