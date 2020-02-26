@@ -130,6 +130,8 @@ class Transactions extends React.Component{
     render(){
         console.log(this)
         let content;
+        let total=0
+        
         if(!this.props.symbols){
             content = <p>Loading...</p>
         }
@@ -137,17 +139,21 @@ class Transactions extends React.Component{
             content = <p>No bought stocks yet</p>
         }
         else{
-        
-        
+            
+            this.props.symbols[this.props.userId].todos.forEach(function(v){
+                let t=v.price*v.quantity
+                total+=t
+            })
+            
             content = this.props.symbols[this.props.userId].todos.map(symbol=><Symbol key={symbol.id} symbol={symbol}></Symbol>)
             
         }
         
-
+        
         return(
             <Wrap>
             < WrapperOne>
-            <div>{this.state.count}</div>
+            <div>{this.state.count-total}</div>
             <Title>Stock Information</Title>
             <InlineBlock>
             <Form getPrice={this.getPrice}/>
@@ -158,7 +164,7 @@ class Transactions extends React.Component{
             error={this.state.error}
             />
             </InlineBlock>
-            <AddSymbol  total={this.state.count}/>
+            <AddSymbol  total={this.state.count-total}/>
             </WrapperOne>
             < WrapperTwo>
                 <Title>Transactions</Title>

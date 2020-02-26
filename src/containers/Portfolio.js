@@ -90,8 +90,10 @@ class Portfolio extends React.Component{
             console.log(arr)
 
 
-
-            content = arr.map((symbol, i)=><Audit key={i} symbol={symbol} ></Audit>)
+            console.log()
+            content = arr.map((symbol, i)=><Audit key={i} symbol={symbol} ></Audit>
+            
+            )
             
         }
         let total=5000

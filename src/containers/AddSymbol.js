@@ -94,10 +94,12 @@ const AddSymbol = ({addSymbol, loading, error}) =>{
             symbol:'',
             quantity:'',
             price:''
-            // todo:''
+      
         }}
         validationSchema={StockSchema}
+        
         onSubmit={async (values,{setSubmitting, resetForm})=>{
+            
             const res = await addSymbol(values)
             setSubmitting(false)
             if(res){

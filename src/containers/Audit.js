@@ -9,7 +9,11 @@ font-size: 16px;
 font-family: 'Lato', sans-serif;
 `
 const SumWrap = styled.div`
+
 float:right;
+`
+const ConditColor=styled.div`
+    color: ${props => ((props.price>props.openPrice) ? "green" :(props.price<props.openPrice) ? "red": '#61677C')}
 `
 
 const API_KEY='FBEEVNPWBGZJJW72'
@@ -18,6 +22,7 @@ class Symbol extends React.Component{
     
         state={    
             price: 0,
+            openPrice:0,
         }
     
     componentDidMount() {
@@ -31,9 +36,11 @@ class Symbol extends React.Component{
         const symbol = this.props.symbol.symbol
         const api_call = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`)
         const data = await api_call.json()
+
         console.log('data',data)
         this.setState({
             price: data['Time Series (Daily)'][Object.keys(data['Time Series (Daily)'])[0]]['4. close'],
+            openPrice: data['Time Series (Daily)'][Object.keys(data['Time Series (Daily)'])[0]]['1. open'],
         })
         
     }
@@ -46,7 +53,7 @@ class Symbol extends React.Component{
         return(
         < TextWrap>
            
-            {this.props.symbol.symbol} · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}USD</SumWrap>
+           <ConditColor price={this.state.price} openPrice={this.state.openPrice} >{this.props.symbol.symbol}</ConditColor>  · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}USD</SumWrap>
 
         </ TextWrap>
         )
