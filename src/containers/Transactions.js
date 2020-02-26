@@ -116,7 +116,6 @@ class Transactions extends React.Component{
         return(
             <Wrap>
                 < WrapperOne>
-                    <div>{this.state.count-total}</div>
                     <Title>Stock Information</Title>
                     <InlineBlock>
                         <Form getPrice={this.getPrice}/>

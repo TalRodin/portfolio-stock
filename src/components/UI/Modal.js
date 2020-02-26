@@ -19,9 +19,7 @@ const WrappedModal = styled.div`
   visibility: ${({ opened }) => (opened ? 'visible' : 'hidden')};
   width: 100%;
   max-width: 50rem;
-  box-shadow: 0 0.5rem 3.5em var(--shadow);
   border-radius: 1rem;
-  background-color: var(--color-mainLighter);
   transition: all 0.1s;
 `;
 

@@ -5,8 +5,7 @@ const TextWrap = styled.div`
     @import url('https://fonts.googleapis.com/css?family=Lato');
     font-size: 16px;
     font-family: 'Lato', sans-serif;
-    color: rgba(51,51,51,1)
-    
+    color: rgba(51,51,51,1)   
 `
 const SumWrap = styled.div`
     float:right;
