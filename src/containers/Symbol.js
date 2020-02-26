@@ -19,9 +19,6 @@ const Bold = styled.div`
     float:left;
 `
 const Symbol = ({symbol}) =>{
-    
-    
-
     return (
         <TextWrap>
           (BUY) <Bold>{symbol.symbol}</Bold> · {symbol.quantity} Shares <SumWrap>@ {symbol.price}</SumWrap>
@@ -29,5 +26,4 @@ const Symbol = ({symbol}) =>{
         </TextWrap>
     )
 }
-
 export default Symbol

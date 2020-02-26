@@ -46,6 +46,7 @@ const ButtonWrapper=styled.button`
     }
 `
 
+// Form to get stock data. It will give mistake if the stock does not exist
 const Form = props =>(
     <form onSubmit={props.getPrice}>
         <StyledInput type="text" name="symbol" placeholder='Symbol...'/>

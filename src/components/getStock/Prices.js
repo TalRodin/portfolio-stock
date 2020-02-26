@@ -13,6 +13,7 @@ const TextWrap = styled.div`
 const Line = styled.p`
     font-weight:bold;
 `
+//Displays information about stock
 
 class Prices extends React.Component{
       render(){

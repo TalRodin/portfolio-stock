@@ -7,13 +7,10 @@ const Ul = styled.ul`
   flex-direction: row;
   align-items: center;
   height: 100%;
-  
 `;
 const Nav = styled.nav`
   margin:0;
   float: right;
-  
-  
 `;
 const NavItems = ({clicked, loggedIn}) =>{
     let links
@@ -40,5 +37,4 @@ const NavItems = ({clicked, loggedIn}) =>{
         </Nav>
     )
 }
-
 export default NavItems

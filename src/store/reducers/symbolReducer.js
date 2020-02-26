@@ -1,5 +1,7 @@
 import * as actions from '../actions/authTypes'
 
+
+//Reducer for buing the stock
 const initialState = {
     error: null,
     loading: false

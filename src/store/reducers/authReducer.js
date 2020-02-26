@@ -1,5 +1,6 @@
 import * as actions from '../actions/authTypes';
 
+//Reducer for auth.
 const initialState = {
     error:null,
     loading: false,

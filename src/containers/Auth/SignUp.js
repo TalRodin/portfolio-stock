@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import * as actions from '../../store/actions'
 import Message from '../../components/UI/Message'
 import styled from 'styled-components';
+
 const ButtonWrapper=styled.button`
       @import url('https://fonts.googleapis.com/css?family=Lato');
       color:#f1555a;
@@ -43,14 +44,14 @@ const FormWrapper = styled.div`
   align-items: center;
   background-color: #f7f7f7;;
   box-shadow:
--2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
--6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
--15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
--50px -50px 85px rgba(255,255,255, 0.07),
-2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
-6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
-15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
-50px 50px 85px rgba(0, 0, 0, 0.07);
+    -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
+    -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
+    -15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
+    -50px -50px 85px rgba(255,255,255, 0.07),
+    2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
+    6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
+    15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
+    50px 50px 85px rgba(0, 0, 0, 0.07);
 `;
 
 const StyledForm = styled(Form)`
@@ -59,8 +60,11 @@ const StyledForm = styled(Form)`
   align-items: center;
   width: 100%;
   flex-direction: column;
-  
 `;
+
+//Sign up form. The user after signing up will receive an email on his account to confirm. 
+//After confirmation the user can return back and login their acount.
+
 
 const SignUpSchema = Yup.object().shape({
     firstName:Yup.string().required('Your first name is required')
@@ -76,14 +80,12 @@ const SignUpSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'),null], 'Password does not match')
     .required('You need to confirm your password.')
 })
-
 const SignUp = ({signUp, loading, error, cleanUp}) =>{
     useEffect(()=>{
         return()=>{
             cleanUp()
         }
     },[cleanUp])
-    console.log(error)
     return (
         <div>
             <Formik
@@ -98,54 +100,47 @@ const SignUp = ({signUp, loading, error, cleanUp}) =>{
             onSubmit={
                 async( values, {setSubmitting})=>
                 {
-                    console.log(values)
                     await signUp(values)
                     setSubmitting(false) 
                 }
-            
             }
             >{({isSubmitting, isValid})=>
-            
             (
                 <FormWrapper>
-                <StyledForm>
-                <Field type='firstName'
-                       name='firstName'
-                       placeholder='Your First Name...' 
-                       component={Input}
-                       />
-                <ErrorMessage name='firstName'/>
-                <Field type='lastName'
-                       name='lastName'
-                       placeholder='Your Last Name...' 
-                       component={Input}
-                       />
-                <ErrorMessage name='lastName'/>
-                <Field type='email'
-                       name='email'
-                       placeholder='Your Email...' 
-                       component={Input}
-                       />
-                <ErrorMessage name='email'/>
-                <Field type='password'
-                       name='password'
-                       placeholder='Your Password...'
-                       component={Input} />
-                <ErrorMessage name='password'/>
-                <Field type='password'
-                       name='confirmPassword'
-                       placeholder='Confirm Password...'
-                       component={Input} />
-                <ErrorMessage name='confirmPassword'/>
-
-
-                <ButtonWrapper disabled={!isValid || isSubmitting} loading={loading ? 'Signing up' : null} type="submit">SignUp</ButtonWrapper>
-                <Message >{error}</Message>
-            </StyledForm>
-            </FormWrapper>
+                    <StyledForm>
+                        <Field type='firstName'
+                            name='firstName'
+                            placeholder='Your First Name...' 
+                            component={Input}
+                            />
+                        <ErrorMessage name='firstName'/>
+                        <Field type='lastName'
+                            name='lastName'
+                            placeholder='Your Last Name...' 
+                            component={Input}
+                            />
+                        <ErrorMessage name='lastName'/>
+                        <Field type='email'
+                            name='email'
+                            placeholder='Your Email...' 
+                            component={Input}
+                            />
+                        <ErrorMessage name='email'/>
+                        <Field type='password'
+                            name='password'
+                            placeholder='Your Password...'
+                            component={Input} />
+                        <ErrorMessage name='password'/>
+                        <Field type='password'
+                            name='confirmPassword'
+                            placeholder='Confirm Password...'
+                            component={Input} />
+                        <ErrorMessage name='confirmPassword'/>
+                        <ButtonWrapper disabled={!isValid || isSubmitting} loading={loading ? 'Signing up' : null} type="submit">SignUp</ButtonWrapper>
+                        <Message >{error}</Message>
+                    </StyledForm>
+                </FormWrapper>
             )}
-            
-           
             </Formik>
         </div>
     )
@@ -153,11 +148,9 @@ const SignUp = ({signUp, loading, error, cleanUp}) =>{
 const mapStateToProps = ({auth}) =>({
     loading:auth.loading,
     error:auth.error
-
 })
 const mapDispatchToProps ={
     signUp: actions.signUp,
     cleanUp: actions.clean
 }
-
 export default connect(mapStateToProps,mapDispatchToProps)(SignUp)

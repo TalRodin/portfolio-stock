@@ -5,6 +5,7 @@ import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import rootReducer from './reducers'
 
+//To use firebase
 const rrfConfig ={
   userProfile: 'users',
   useFirestoreForProfile: true,

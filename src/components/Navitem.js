@@ -7,8 +7,6 @@ const Li = styled.li`
     display: flex;
     height: 100%;
     cursor: pointer;
-
-  
 `;
 const StyledNavLink = styled(NavLink)`
     display: flex;
@@ -51,13 +49,11 @@ const Buttonwrap =styled.div`
 const NavItem = ({link, children,clicked}) =>{
     return (
         <Li>
-            
             <StyledNavLink  onClick={clicked} to={link}>
-            <Buttonwrap>
-                {children}
+               <Buttonwrap>
+                    {children}
                 </Buttonwrap>
-                </StyledNavLink>
-            
+            </StyledNavLink>
         </Li>
     )
 }

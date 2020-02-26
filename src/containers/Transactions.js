@@ -64,7 +64,7 @@ const Wrap=styled.div`
 const InlineBlock=styled.div`
     display:inline-block;
 `
-
+//Displays Transactions, and gets api data from another website
 
 const API_KEY='FBEEVNPWBGZJJW72'
 

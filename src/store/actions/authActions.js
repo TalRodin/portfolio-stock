@@ -1,5 +1,6 @@
-  import * as actions from './authTypes';
+import * as actions from './authTypes';
 
+//Auth Actions to Sign UP
 export const signUp = data => async (dispatch,
     getState,
     { getFirebase, getFirestore })=>{
