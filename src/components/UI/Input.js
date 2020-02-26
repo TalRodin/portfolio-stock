@@ -8,15 +8,17 @@ const InputWrapper=styled.div`
   margin-bottom: 1.5rem;
   flex-direction: column;
   margin-left:70%;
+  color: rgba(51,51,51,1) ;
 `
 const StyledInput = styled.input`
 margin-right: 8px;
 padding: 1.2rem 2rem;
 box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
 width: 100%;
+color: rgba(51,51,51,1) ;
 box-sizing: border-box;
 transition: all 0.2s ease-in-out;
-text-transform: uppercase;
+// text-transform: uppercase;
 appearance: none;
 float:left;
 width:30%;

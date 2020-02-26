@@ -7,6 +7,30 @@ import {connect} from 'react-redux'
 import * as actions from '../../store/actions'
 import Message from '../../components/UI/Message'
 import styled from 'styled-components';
+const ButtonWrapper=styled.button`
+      @import url('https://fonts.googleapis.com/css?family=Lato');
+      color:#f1555a;
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+      box-shadow: -5px -5px 20px #FFF,  5px 5px 20px #BABECC;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      border: 0;
+      outline: 0;
+      width:30%;
+      border-radius: 50px;
+      padding:16px;
+      background-color:#f7f7f7;
+      text-shadow: 1px 1px 0 #FFF;
+      &:hover {
+        box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+      }
+
+      &:active {
+        box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+      }
+`
 const FormWrapper = styled.div`
   width: 100%;
   max-width: 60rem;
@@ -35,6 +59,7 @@ const StyledForm = styled(Form)`
   align-items: center;
   width: 100%;
   flex-direction: column;
+  
 `;
 
 const SignUpSchema = Yup.object().shape({
@@ -86,35 +111,35 @@ const SignUp = ({signUp, loading, error, cleanUp}) =>{
                 <StyledForm>
                 <Field type='firstName'
                        name='firstName'
-                       placeholder='Your firstName...' 
+                       placeholder='Your First Name...' 
                        component={Input}
                        />
                 <ErrorMessage name='firstName'/>
                 <Field type='lastName'
                        name='lastName'
-                       placeholder='Your lastName...' 
+                       placeholder='Your Last Name...' 
                        component={Input}
                        />
                 <ErrorMessage name='lastName'/>
                 <Field type='email'
                        name='email'
-                       placeholder='Your email...' 
+                       placeholder='Your Email...' 
                        component={Input}
                        />
                 <ErrorMessage name='email'/>
                 <Field type='password'
                        name='password'
-                       placeholder='Your password...'
+                       placeholder='Your Password...'
                        component={Input} />
                 <ErrorMessage name='password'/>
                 <Field type='password'
                        name='confirmPassword'
-                       placeholder='Your confirmPassword...'
+                       placeholder='Confirm Password...'
                        component={Input} />
                 <ErrorMessage name='confirmPassword'/>
 
 
-                <Button disabled={!isValid || isSubmitting} loading={loading ? 'Signing up' : null} type="submit">SignUp</Button>
+                <ButtonWrapper disabled={!isValid || isSubmitting} loading={loading ? 'Signing up' : null} type="submit">SignUp</ButtonWrapper>
                 <Message >{error}</Message>
             </StyledForm>
             </FormWrapper>

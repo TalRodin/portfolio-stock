@@ -49,7 +49,7 @@ class Symbol extends React.Component{
     render(){
         return(
         <TextWrap>
-           <ConditColor price={this.state.price} openPrice={this.state.openPrice} >{this.props.symbol.symbol}</ConditColor> · {this.props.symbol.quantity} Shares<SumWrap>${this.state.price*this.props.symbol.quantity} USD -- ({Math.round(this.state.price*this.props.symbol.quantity-this.props.symbol.price)})</SumWrap>
+           <ConditColor price={this.state.price} openPrice={this.state.openPrice} >{this.props.symbol.symbol}</ConditColor> · {this.props.symbol.quantity} Shares<SumWrap>${(this.state.price*this.props.symbol.quantity).toFixed(2)} USD -- ({(this.state.price*this.props.symbol.quantity-this.props.symbol.price).toFixed(2)})</SumWrap>
            <Line></Line>
         </TextWrap>
         )

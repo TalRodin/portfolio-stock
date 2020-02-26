@@ -11,6 +11,15 @@ const Title=styled.div`
     font-weight: bold;
     font-family: 'Lato', sans-serif;
     text-align: center;
+
+    color: rgba(51,51,51,1)
+`
+const T=styled.h5`
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+    font-family: 'Lato', sans-serif;
+    text-align: center;
     padding-bottom: 10%;
     color: rgba(51,51,51,1)
 `
@@ -77,13 +86,7 @@ class Portfolio extends React.Component{
                 }
                 n.push(obj)
             })
-            let arr=[]
-            Object.keys(new_object).forEach(function(v){
-                let obj={}
-                obj['symbol']=v
-                obj['quantity']=new_object[v]
-                arr.push(obj)
-            })
+         
             content = n.map((symbol, i)=><Audit key={i} symbol={symbol} ></Audit>
             )
         }
@@ -93,6 +96,7 @@ class Portfolio extends React.Component{
                 <Title>
                     {`Portfolio`}
                 </Title>
+                <T>Cash available initially: $5000 USD</T>
                 {content}
             </WrapperTwo>
         </Wrap>

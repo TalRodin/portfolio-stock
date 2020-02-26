@@ -8,7 +8,16 @@ import SignUp from './containers/Auth/SignUp'
 import {connect} from 'react-redux'
 import Logout from './containers/Auth/Logout'
 import VerifyEmail from './containers/Auth/VerifyEmail'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+const fadeInOne = keyframes`
+  from {
+    transform :rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+`
+
 const BackgroundOne = styled.div`
 position: fixed;
 width: 650px;
@@ -16,8 +25,18 @@ height: 500px;
 top: 40%;
 right:-10px;
 border:solid thin #f49e9f;
-border-radius: 30% 70% 70% 30% / 30% 69% 31% 70% ;
+border-radius: 30% 70% 70% 30% / 30% 69% 31% 70%;
+animation: 40s ${fadeInOne} ease;
 `
+const fadeInTwo = keyframes`
+  from {
+    transform :rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+`
+
 const BackgroundTwo = styled.div`
 position: fixed;
 width: 400px;
@@ -26,6 +45,15 @@ top: 55%;
 left:40px;
 border:solid thin #f49e9f;
 border-radius: 60% 35% 60% 38% / 33% 23% 77% 67% ;
+animation: 60s ${fadeInTwo} ease;
+`
+const fadeInThree = keyframes`
+  from {
+    transform :rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 `
 const BackgroundThree = styled.div`
 position: fixed;
@@ -35,6 +63,7 @@ top: 0%;
 left:20%;
 border:solid thin #f49e9f;
 border-radius: 60% 35% 60% 38% / 33% 23% 77% 67% ;
+animation: 80s ${fadeInThree} infinite linear;
 `
 const App = ({loggedIn,emailVerified}) => {
     let routes;
