@@ -4,60 +4,43 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import Audit from './Audit'
 import styled from 'styled-components';
-const Title=styled.div`
-@import url('https://fonts.googleapis.com/css?family=Lato');
-text-transform: uppercase;
 
-font-family: 'Lato', sans-serif;
-display:center;
-text-align: center;
-padding-bottom: 10%;
-color: #61677C;
+const Title=styled.div`
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    padding-bottom: 10%;
+    color: rgba(51,51,51,1)
 `
 const Wrap=styled.div`
-
-    width: 90%;
-    // border: 1px solid red;
-    margin:auto;
-    // height: 900px;
+    position:center;
+    width: 50%;
     top:20%;
-    left:5%;
-    
+    left:20%;
     position:absolute;
-
-
 `
 
 
 const WrapperTwo=styled.div`
-// float:center;
-width: 40%;
-height: 500px;
-margin-left: 8%;
-border-radius: 4px;
-//   width:40%;
-                    // height:auto;
-                    // position: absolute;
-                 
-                    // margin-top:50px;
-                    // margin-bottom:50px;
-                    // border-radius:1rem;
-  background-color: #f7f7f7;
- padding: 30px;
-  box-shadow:
--2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
--6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
--15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
--50px -50px 85px rgba(255,255,255, 0.07),
-2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
-6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
-15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
-50px 50px 85px rgba(0, 0, 0, 0.07);
+    height: 500px;
+    margin-left: 10%;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    padding: 30px;
+    box-shadow:
+        -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
+        -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
+        -15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
+        -50px -50px 85px rgba(255,255,255, 0.07),
+        2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
+        6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
+        15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
+        50px 50px 85px rgba(0, 0, 0, 0.07);
 `
 class Portfolio extends React.Component{
-    
     render(){
-        console.log(this)
         let content;
         if(!this.props.symbols){
             content = <p>Loading...</p>
@@ -66,70 +49,49 @@ class Portfolio extends React.Component{
             content = <p>No bought stocks yet</p>
         }
         else{
-            
-        
-
             let new_object={}
             this.props.symbols[this.props.userId].todos.forEach(function(v){
-                 if(v.symbol in new_object){
+                if(v.symbol in new_object){
                     new_object[v.symbol]+=v.quantity
-                    
-                 }
-                  else{
+                }
+                else{
                     new_object[v.symbol]=v.quantity
-                
-                  }
-               
+                } 
             })
             let priceObject={}
             this.props.symbols[this.props.userId].todos.forEach(function(v){
                 if(v.symbol in priceObject){
                     priceObject[v.symbol]+=(v.quantity*v.price)
-                   
                 }
-                 else{
+                else{
                     priceObject[v.symbol]=(v.quantity*v.price)
-               
-                 }
-              
-           })
-           let n=[]
-           Object.keys(new_object).forEach(function(v){
-               console.log(Object.keys(priceObject))
-               let obj={}
-               if (Object.keys(priceObject).includes(v)){
-                obj['symbol']=v
-                obj['quantity']=new_object[v]
-                obj['price']=priceObject[v]
-               }
-               n.push(obj)
-           })
-           console.log(n)
-            
+                }
+            })
+            let n=[]
+            Object.keys(new_object).forEach(function(v){
+                let obj={}
+                if (Object.keys(priceObject).includes(v)){
+                    obj['symbol']=v
+                    obj['quantity']=new_object[v]
+                    obj['price']=priceObject[v]
+                }
+                n.push(obj)
+            })
             let arr=[]
             Object.keys(new_object).forEach(function(v){
                 let obj={}
                 obj['symbol']=v
                 obj['quantity']=new_object[v]
-                
                 arr.push(obj)
             })
-            
-            
-
-            
-            
             content = n.map((symbol, i)=><Audit key={i} symbol={symbol} ></Audit>
-            
             )
-            
         }
-        let total=5000
     return (
         <Wrap>
             <WrapperTwo>
                 <Title>
-                    {`Cash account balance: $${total} USD`}
+                    {`Portfolio`}
                 </Title>
                 {content}
             </WrapperTwo>
