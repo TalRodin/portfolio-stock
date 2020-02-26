@@ -98,14 +98,16 @@ class Transactions extends React.Component{
         symbol: undefined,
         price: undefined,
         volume: undefined,
-        error: undefined
+        error: undefined,
+        count: 5000
     }
     getPrice = async (e) => {
         e.preventDefault()
         const symbol = e.target.elements.symbol.value
         const api_call = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`)
         const data = await api_call.json()
-        if (symbol){
+        console.log(data)
+        if (symbol && !data["Error Message"]){
             console.log(data['Time Series (Daily)'][Object.keys(data['Time Series (Daily)'])[0]]['4. close'])
             this.setState({
                 symbol: data['Meta Data']['2. Symbol'],
@@ -118,13 +120,13 @@ class Transactions extends React.Component{
                 symbol: undefined,
                 price: undefined,
                 volume: undefined,
-                error: "Please enter the symbol"
+                error: "The ticker symbol is NOT valid. Please enter the valid symbol"
             })
             
         }
         
     }
-
+    
     render(){
         console.log(this)
         let content;
@@ -135,13 +137,17 @@ class Transactions extends React.Component{
             content = <p>No bought stocks yet</p>
         }
         else{
+        
+        
             content = this.props.symbols[this.props.userId].todos.map(symbol=><Symbol key={symbol.id} symbol={symbol}></Symbol>)
+            
         }
-       
+        
 
         return(
             <Wrap>
             < WrapperOne>
+            <div>{this.state.count}</div>
             <Title>Stock Information</Title>
             <InlineBlock>
             <Form getPrice={this.getPrice}/>
@@ -152,7 +158,7 @@ class Transactions extends React.Component{
             error={this.state.error}
             />
             </InlineBlock>
-            <AddSymbol  />
+            <AddSymbol  total={this.state.count}/>
             </WrapperOne>
             < WrapperTwo>
                 <Title>Transactions</Title>

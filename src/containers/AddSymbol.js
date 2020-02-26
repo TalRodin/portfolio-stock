@@ -68,11 +68,14 @@ align-items: center;
 width: 100%;
 flex-direction: column;
 `;
+
+
+
 const StockSchema=Yup.object().shape({
     // todo: Yup.string().required('The symbol is required'),
     symbol:Yup.string().required('The symbol is required'),
-    quantity: Yup.number().integer().required('The quantity is required'),
-    price:Yup.number().required('The quantity is required')
+    quantity: Yup.number().integer('The quantity must be the whole number').required('The quantity is required'),
+    price:Yup.number().required('The price is required')
 })
 
 
@@ -125,20 +128,20 @@ const AddSymbol = ({addSymbol, loading, error}) =>{
                         component={Input}
                     />
                     <div>
-                    <ButtonWrap
+                    <Button
                     
                     type='submit'
                     disabled={!isValid || isSubmitting}
                     loading={loading ? 'Adding...': null}
                     >
                         Submit order
-                    </ButtonWrap>
-                    <ButtonWrap
+                    </Button>
+                    <Button
                
                     onClick={()=>setisOpened(false)}
                     >
                         Cancel
-                    </ButtonWrap>
+                    </Button>
                     </div>
 
         <div>

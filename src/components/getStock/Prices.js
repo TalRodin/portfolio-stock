@@ -10,14 +10,15 @@ position:absolute;
 margin-top: 5%;
 `
 
-const Prices =props=>(
-   
-        
+const Prices =props=>{
+           console.log(props)
+          return(
             <TextWrap>
+                
                 {props.symbol && <p>Symbol: {props.symbol}</p>}
                 {props.price && <p>Price: {props.price}</p>}
                 {props.volume && <p>Volume: {props.volume}</p>}
                 {props.error && <p>{props.error}</p>}
-            </TextWrap>
-    )
+            </TextWrap>)
+}
 export default Prices

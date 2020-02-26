@@ -12,7 +12,7 @@ transition: all 0.2s ease-in-out;
 cursor: pointer;
 border: 0;
 outline: 0;
-width:30%;
+// width:30%;
 border-radius: 50px;
 padding:16px;
 background-color:#f7f7f7;
