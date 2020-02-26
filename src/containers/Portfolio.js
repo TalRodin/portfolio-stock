@@ -57,7 +57,7 @@ border-radius: 4px;
 class Portfolio extends React.Component{
     
     render(){
-        
+        console.log(this)
         let content;
         if(!this.props.symbols){
             content = <p>Loading...</p>
@@ -67,10 +67,13 @@ class Portfolio extends React.Component{
         }
         else{
             
+        
+
             let new_object={}
             this.props.symbols[this.props.userId].todos.forEach(function(v){
                  if(v.symbol in new_object){
                     new_object[v.symbol]+=v.quantity
+                    
                  }
                   else{
                     new_object[v.symbol]=v.quantity
@@ -78,20 +81,45 @@ class Portfolio extends React.Component{
                   }
                
             })
-            console.log(new_object)
+            let priceObject={}
+            this.props.symbols[this.props.userId].todos.forEach(function(v){
+                if(v.symbol in priceObject){
+                    priceObject[v.symbol]+=(v.quantity*v.price)
+                   
+                }
+                 else{
+                    priceObject[v.symbol]=(v.quantity*v.price)
+               
+                 }
+              
+           })
+           let n=[]
+           Object.keys(new_object).forEach(function(v){
+               console.log(Object.keys(priceObject))
+               let obj={}
+               if (Object.keys(priceObject).includes(v)){
+                obj['symbol']=v
+                obj['quantity']=new_object[v]
+                obj['price']=priceObject[v]
+               }
+               n.push(obj)
+           })
+           console.log(n)
+            
             let arr=[]
             Object.keys(new_object).forEach(function(v){
                 let obj={}
                 obj['symbol']=v
                 obj['quantity']=new_object[v]
-                console.log(obj)
+                
                 arr.push(obj)
             })
-            console.log(arr)
+            
+            
 
-
-            console.log()
-            content = arr.map((symbol, i)=><Audit key={i} symbol={symbol} ></Audit>
+            
+            
+            content = n.map((symbol, i)=><Audit key={i} symbol={symbol} ></Audit>
             
             )
             

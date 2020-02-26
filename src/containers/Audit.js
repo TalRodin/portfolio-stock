@@ -31,7 +31,7 @@ class Symbol extends React.Component{
           this.getPrice();
         }, 1000 * 60 * 60 * 24);
       }
-      
+    
     getPrice=async()=>{
         const symbol = this.props.symbol.symbol
         const api_call = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`)
@@ -47,13 +47,14 @@ class Symbol extends React.Component{
     componentWillUnmount() {
         clearInterval(this.interval);
       }
+   
     render(){
         console.log('+++++',this)
        
         return(
         < TextWrap>
-           
-           <ConditColor price={this.state.price} openPrice={this.state.openPrice} >{this.props.symbol.symbol}</ConditColor>  · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}USD</SumWrap>
+     
+           <ConditColor price={this.state.price} openPrice={this.state.openPrice} >{this.props.symbol.symbol}</ConditColor>  · {this.props.symbol.quantity} Shares <SumWrap>${this.state.price*this.props.symbol.quantity}USD {Math.round(this.state.price*this.props.symbol.quantity-this.props.symbol.price)}</SumWrap>
 
         </ TextWrap>
         )

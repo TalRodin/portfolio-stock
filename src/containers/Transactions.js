@@ -144,9 +144,14 @@ class Transactions extends React.Component{
                 let t=v.price*v.quantity
                 total+=t
             })
+            // console.log(total/this.state.price)
+            // if (Math.floor(total/this.state.price)>=1){
+            //     message=`You are able to buy ${Math.floor(total/this.state.price)} stocks`
+            //     }else if(Math.floor(total/this.state.price)==0){
+            //     message=`You have no available cash to buy stocks`
+            //     }
             
             content = this.props.symbols[this.props.userId].todos.map(symbol=><Symbol key={symbol.id} symbol={symbol}></Symbol>)
-            
         }
         
         
@@ -161,8 +166,11 @@ class Transactions extends React.Component{
             symbol={this.state.symbol}
             price={this.state.price}
             volume={this.state.volume}
+            cash={this.state.count-total}
             error={this.state.error}
             />
+           
+            
             </InlineBlock>
             <AddSymbol  total={this.state.count-total}/>
             </WrapperOne>
