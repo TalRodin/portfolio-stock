@@ -1,21 +1,33 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const SymbolWrap=styled.div`
-@import url('https://fonts.googleapis.com/css?family=Lato');
-font-size: 16px;
-font-family: 'Lato', sans-serif;
-color: #61677C;
+const TextWrap = styled.div`
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    color: rgba(51,51,51,1)
+    
 `
-
+const SumWrap = styled.div`
+    float:right;
+`
+const Line=styled.div`
+    padding-top: 5px;
+    border-top: 1px solid #eee;
+`
+const Bold = styled.div`
+    font-weight: bold;
+    float:left;
+`
 const Symbol = ({symbol}) =>{
     
     
 
     return (
-        <SymbolWrap>
-          (BUY) {symbol.symbol} · {symbol.quantity} Shares @ {symbol.price}
-        </SymbolWrap>
+        <TextWrap>
+          (BUY) <Bold>{symbol.symbol}</Bold> · {symbol.quantity} Shares <SumWrap>@ {symbol.price}</SumWrap>
+          <Line></Line>
+        </TextWrap>
     )
 }
 
